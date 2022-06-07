@@ -17,17 +17,17 @@ for(const link of links) {
   })
 }
 
-// aplicar sombra no header da página quando der scroll
-const header = document.querySelector('#header');
-const navHeight = header.offsetHeight;
+// mudar o header da página quando der scroll
+function changeHeaderOnScroll() {
+  const header = document.querySelector('#header');
+  const navHeight = header.offsetHeight;
 
-window.addEventListener('scroll', function() {
   if(window.scrollY >= navHeight) {
     header.classList.add('scroll');
   } else {
     header.classList.remove('scroll');
   }
-})
+}
 
 
 /* Testimonials carousel slider swiper */
@@ -58,11 +58,18 @@ footer .brand, footer .social`, { interval: 100 });
 
 
 /* Botão voltar para o topo */
-const backToTopButton = document.querySelector('.back-to-top');
-window.addEventListener('scroll', function() {
+function backToTop() {
+  const backToTopButton = document.querySelector('.back-to-top');
+
   if (window.scrollY >= 560) {
     backToTopButton.classList.add('show');
   } else {
     backToTopButton.classList.remove('show');
   }
+}
+
+/* When Scroll */
+window.addEventListener('scroll', function() {
+  changeHeaderOnScroll();
+  backToTop();
 });
